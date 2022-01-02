@@ -1,4 +1,4 @@
 - data
-- mongodb example
+  - mongodb example
 - rest
   - library-example: HTTP methods and Spring HATEOAS
