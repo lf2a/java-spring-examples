@@ -1,0 +1,7 @@
+server:
+  port: 9901
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:root@172.29.33.246:27017/testdb?retryWrites=true&w=majority&authSource=admin
