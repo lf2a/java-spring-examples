@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- carregando o arquivo properties -->
+    <context:property-placeholder location="classpath:sport.properties"/>
+
+    <bean id="myFortuneService"
+          class="com.lf2a.springdemo.HappyFortuneService">
+    </bean>
+
+    <bean id="myCoach"
+          class="com.lf2a.springdemo.TrackCoach">
+        <!-- // ref: aonde vai ser injetada a dependencia -->
+        <constructor-arg ref="myFortuneService"/>
+    </bean>
+
+    <bean id="myCricketCoach"
+          class="com.lf2a.springdemo.CricketCoach">
+        <!-- setter injection -->
+        <property name="fortuneService" ref="myFortuneService"/>
+
+        <!-- inject literal values -->
+        <!-- <property name="emailAddress" value="luizflipy.aa@outlook.com"/> -->
+        <!-- <property name="team" value="Brasil"/> -->
+
+        <!-- injetando valores do arquivo propertie -->
+        <property name="emailAddress" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
+    </bean>
+
+    <!--
+    <bean id="myCoach"
+          class="com.lf2a.springdemo.BaseballCoach">
+        // ref: aonde vai ser injetada a dependencia
+        <constructor-arg ref="myFortuneService"/>
+    </bean>
+    -->
+</beans>
+
+
+
+
+
