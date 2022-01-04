@@ -3,4 +3,6 @@
 - rest
   - library-example: HTTP methods and Spring HATEOAS
 - aop
- - aop examples
+  - aop examples
+- core
+  - ioc, di
