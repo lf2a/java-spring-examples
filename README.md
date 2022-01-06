@@ -7,3 +7,4 @@
 - core
   - ioc, di
 - webflux
+- thymeleaf
