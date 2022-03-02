@@ -1,0 +1,29 @@
+server:
+  port: 8090
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/security-api
+          jwk-set-uri: http://localhost:8080/realms/security-api/protocol/openid-connect/certs
+      client:
+        registration:
+          keycloak:
+            client-id: test-spring-auth
+            client-secret: jT9zrMyknF8m8XRGHqpcqvrxDBu26lry
+            clientName: Keycloak
+            authorization-grant-type: authorization_code
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8080/realms/security-api/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/realms/security-api/protocol/openid-connect/token
+            user-info-uri: http://localhost:8080/realms/security-api/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8080/realms/security-api/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
